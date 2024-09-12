@@ -1,15 +1,40 @@
-const caixaprincipal = document.querySelector('.caixa-principal');
-const caixaPergunta = document.querySelector('caixa-pergunta');
-const caixaLterniva = document.querySelector('caixa-alternaiva');
-const cixareultado = documnt.querySelector('caixaa-resultao');
+const caixaPrincipal = document.querySelector('.caixa-principal');
+const caixaPergunta = document.querySelector('.caixa-pergunta');
+const caixaAlternativa = document.querySelector('.caixa-alternativa');
+const caixaResultado = document.querySelector('.caixa-resultado');
 
-const perguntas =[//abre uma lista qualquer
-    {//obre o objetivo da lista (cada item)
-        enunciado:"pergunta 1",
-        alternativas: [
-            "alternativa 1",
-            "alternativa 2"
-        ]
-    }//fechar a o objeto da lista (fim do item
-]//fechando a lista toda (completa)
+const perguntas = [
+    {
+        enunciado: "você gosta da ideia da interligencia artificial?",
+        alternativas:["sim", "nao"]
+    },
+    {
+        enunciado: " a inteligencia artificial pode desenvolver conciência própria?",
+        alternativas:["sim", "nao"]
+    },
+    {
+        enunciado: "a inteligencia artificial pode tomar decisoes eticas de forma completamente autonoma?",
+        alternativas:["sim", "nao"]
+    }
+]
+
+let atual = 0;
+let perguntaAtual;
+
+function mostraPergunta(){
+    perguntaAtual = perguntas[posicao];
+    caixaPergunta.textContent = perguntaAtual.enunciado;
+    mostraAlternativas();
+}
+function mostraAlternativas(){
+    for(const alternativa of perguntaAtual.alternativa){
+        const botaoAlternativas = document.createElement("button");
+        botaoAlternativas.textContent = alternativa;
+        caixaAlternativa.appendChild(botaoAlternativas);
+
+    }
+}
+
+
+
 
