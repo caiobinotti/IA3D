@@ -5,36 +5,64 @@ const caixaResultado = document.querySelector('.caixa-resultado');
 
 const perguntas = [
     {
-        enunciado: "você gosta da ideia da interligencia artificial?",
-        alternativas:["sim", "nao"]
+        enunciado: "Você gosta da ideia de Inteligência Artificial?",
+        alternativas: [
+            {
+                texto: "Sim",
+                afirmativa: "Afirmativa da alternativa 1"
+            },
+            {
+                texto: "Não",
+                afirmativa: "Afirmativa da alternativa 2"
+            }
+        ]
     },
     {
-        enunciado: " a inteligencia artificial pode desenvolver conciência própria?",
-        alternativas:["sim", "nao"]
+        enunciado: "Pergunta 2",
+        alternativas: [
+            {
+                texto: "Sim",
+                afirmativa: "Afirmativa da alternativa 1"
+            },
+            {
+                texto: "Não",
+                afirmativa: "Afirmativa da alternativa 2"
+            }
+        ]
     },
     {
-        enunciado: "a inteligencia artificial pode tomar decisoes eticas de forma completamente autonoma?",
-        alternativas:["sim", "nao"]
+        enunciado: "Pergunta 3",
+        alternativas: [
+            {
+                texto: "Sim",
+                afirmativa: "Afirmativa da alternativa 1"
+            },
+            {
+                texto: "Não",
+                afirmativa: "Afirmativa da alternativa 2"
+            }
+        ]
     }
 ]
 
-let atual = 0;
+let posicao = 0;
 let perguntaAtual;
 
-function mostraPergunta(){
+function mostraPergunta() {
     perguntaAtual = perguntas[posicao];
     caixaPergunta.textContent = perguntaAtual.enunciado;
     mostraAlternativas();
 }
-function mostraAlternativas(){
-    for(const alternativa of perguntaAtual.alternativa){
+function mostraAlternativas() {
+    for (const alternativa of perguntaAtual.alternativas) {
         const botaoAlternativas = document.createElement("button");
-        botaoAlternativas.textContent = alternativa;
+        botaoAlternativas.textContent = alternativa.texto;
+        botaoAlternativas.addEventListener("click",function(){
+            posicao++;
+            mostraPergunta();
+        });
         caixaAlternativa.appendChild(botaoAlternativas);
-
     }
 }
 
-
-
-
+mostraPergunta();
